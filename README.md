@@ -19,6 +19,11 @@ The task is to create a basic app that makes a call to a weather (RESTful) web s
 - CocoaPods
 
 
+## Dependencies
+
+- SnapKit is used for easier syntax for AutoLayout
+- Result is used for better return type regrads API callbacks
+
 
 ## Installation
 
