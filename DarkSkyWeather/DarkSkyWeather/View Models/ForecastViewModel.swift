@@ -53,4 +53,20 @@ extension ForecastViewModel {
   func weather(at indexPath: IndexPath) -> Weather? {
     return model?.daily.weatherList[indexPath.item]
   }
+  
+  func detailViewController(for weather: Weather) -> UIViewController {
+    let title = "\(weather.time.weekdayName.uppercased()) forecast"
+    let message = """
+    Summary: \(weather.summary)
+    Status: \(weather.icon)
+    High: \(weather.apparentTemperatureHigh) @ \(Calendar.current.component(.hour, from: weather.apparentTemperatureHighTime))
+    Low: \(weather.apparentTemperatureLow) @ \(Calendar.current.component(.hour, from: weather.apparentTemperatureLowTime))
+"""
+    let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    
+    let cancleAction = UIAlertAction(title: "OK", style: .default) { _ in }
+    alertViewController.addAction(cancleAction)
+    return alertViewController
+  }
+  
 }

@@ -83,6 +83,13 @@ extension ForecastViewController: UICollectionViewDataSource {
 }
 
 extension ForecastViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let weather = viewModel.weather(at: indexPath) else { return }
+    
+    let detailViewController = viewModel.detailViewController(for: weather)
+    present(detailViewController, animated: true, completion: nil)
+    
+  }
 }
 
 class WeatherCollectionViewCell: UICollectionViewCell {
