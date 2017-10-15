@@ -87,42 +87,60 @@ extension ForecastViewController: UICollectionViewDelegateFlowLayout {
 
 class WeatherCollectionViewCell: UICollectionViewCell {
   fileprivate let horizontalPadding: CGFloat = 5.0
+  fileprivate let verticalPadding: CGFloat = 10.0
   let summaryLabel = UILabel()
   let iconLabel = UILabel()
   let temperatureLabel = UILabel()
+  let dateLabel = UILabel()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     
     backgroundColor = .blue
-    [temperatureLabel, iconLabel, summaryLabel].forEach {
+    [dateLabel, temperatureLabel, iconLabel, summaryLabel].forEach {
       $0.textColor = .white
       $0.textAlignment = .center
       $0.backgroundColor = .clear
       contentView.addSubview($0)
     }
     
-    temperatureLabel.font = UIFont.boldSystemFont(ofSize: 20)
     summaryLabel.numberOfLines = 0
+    summaryLabel.snp.setLabel("Summary")
+    dateLabel.snp.setLabel("Date")
+    temperatureLabel.snp.setLabel("Temperature")
+    iconLabel.snp.setLabel("Icon")
+    
+    dateLabel.snp.makeConstraints { make in
+      make.left.top.equalToSuperview()
+      make.width.equalToSuperview().dividedBy(4.0)
+      make.bottom.equalToSuperview()
+    }
+    
     temperatureLabel.snp.makeConstraints { make in
-      make.top.left.right.equalToSuperview()
+      make.top.equalToSuperview()
+      make.width.equalToSuperview().dividedBy(4.0)
+      make.left.equalTo(dateLabel.snp.right)
     }
     
     iconLabel.snp.makeConstraints { make in
-      make.left.right.equalToSuperview()
-      make.top.equalTo(temperatureLabel.snp.bottom)
+      make.top.equalTo(temperatureLabel.snp.top)
+      make.right.equalToSuperview()
+      make.left.equalTo(temperatureLabel.snp.right)
+      make.bottom.equalTo(temperatureLabel.snp.bottom)
     }
     
     summaryLabel.snp.makeConstraints { make in
-      make.left.right.equalToSuperview().inset(horizontalPadding)
-      make.top.equalTo(iconLabel.snp.bottom)
+      make.left.equalTo(dateLabel.snp.right)
+      make.right.equalToSuperview().inset(horizontalPadding)
+      make.top.equalTo(temperatureLabel.snp.bottom).offset(verticalPadding).priority(.medium)
     }
     
     contentView.snp.makeConstraints { make in
-      make.bottom.equalTo(summaryLabel.snp.bottom)
+      make.bottom.equalTo(summaryLabel.snp.bottom).offset(verticalPadding).priority(.medium)
     }
     
     contentView.translatesAutoresizingMaskIntoConstraints = true
+    contentView.autoresizingMask = [.flexibleWidth]
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -143,9 +161,11 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     let temperatureHigh = Int(weather.temperatureHigh)
     let temperatureLow = Int(weather.temperatureLow)
     let temperature = "\(temperatureHigh) - \(temperatureLow)"
+    let dateString = weather.time.weekdayName.uppercased()
     summaryLabel.text = summary
     iconLabel.text = icon
-    temperatureLabel.text  = temperature
+    temperatureLabel.text = temperature
+    dateLabel.text = dateString
     setNeedsLayout()
     layoutIfNeeded()
   }
@@ -154,6 +174,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     summaryLabel.text = nil
     iconLabel.text = nil
     temperatureLabel.text = nil
+    dateLabel.text = nil
   }
 }
 
