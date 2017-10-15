@@ -166,6 +166,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     iconLabel.text = icon
     temperatureLabel.text = temperature
     dateLabel.text = dateString
+    contentView.backgroundColor = UIColor.color(forWeatherIcon: weather.icon)
     setNeedsLayout()
     layoutIfNeeded()
   }
