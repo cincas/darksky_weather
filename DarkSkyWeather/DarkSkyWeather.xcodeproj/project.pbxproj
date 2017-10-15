@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		53B57469D4F34031D3DB82C2 /* Pods_DarkSkyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A43ADABBE3081C8CA76C57 /* Pods_DarkSkyWeather.framework */; };
 		604052DFB4F34091172BA4E6 /* Pods_DarkSkyWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34681BF348D5A3F3999B5CB7 /* Pods_DarkSkyWeatherTests.framework */; };
+		F60B0ABD1F931AFA00F8763E /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60B0ABC1F931AE600F8763E /* ForecastViewController.swift */; };
 		F65977FA1F92DE9C00FEC22F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65977F91F92DE9C00FEC22F /* AppDelegate.swift */; };
-		F65977FC1F92DE9C00FEC22F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65977FB1F92DE9C00FEC22F /* ViewController.swift */; };
 		F65978011F92DE9C00FEC22F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F65978001F92DE9C00FEC22F /* Assets.xcassets */; };
 		F65978041F92DE9C00FEC22F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F65978021F92DE9C00FEC22F /* LaunchScreen.storyboard */; };
 		F659780F1F92DE9C00FEC22F /* DarkSkyWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659780E1F92DE9C00FEC22F /* DarkSkyWeatherTests.swift */; };
@@ -36,9 +36,9 @@
 		73EEE02B4AD2C14327D2A5C8 /* Pods-DarkSkyWeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DarkSkyWeatherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DarkSkyWeatherTests/Pods-DarkSkyWeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9A43ADABBE3081C8CA76C57 /* Pods_DarkSkyWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DarkSkyWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF70996B758968589E2E7153 /* Pods-DarkSkyWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DarkSkyWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DarkSkyWeather/Pods-DarkSkyWeather.debug.xcconfig"; sourceTree = "<group>"; };
+		F60B0ABC1F931AE600F8763E /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		F65977F61F92DE9C00FEC22F /* DarkSkyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarkSkyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65977F91F92DE9C00FEC22F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F65977FB1F92DE9C00FEC22F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F65978001F92DE9C00FEC22F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F65978031F92DE9C00FEC22F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F65978051F92DE9C00FEC22F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,7 +118,6 @@
 				F659781E1F92E59400FEC22F /* View Models */,
 				F659781D1F92E59400FEC22F /* ViewControllers */,
 				F65977F91F92DE9C00FEC22F /* AppDelegate.swift */,
-				F65977FB1F92DE9C00FEC22F /* ViewController.swift */,
 				F65978001F92DE9C00FEC22F /* Assets.xcassets */,
 				F65978021F92DE9C00FEC22F /* LaunchScreen.storyboard */,
 				F65978051F92DE9C00FEC22F /* Info.plist */,
@@ -146,6 +145,7 @@
 		F659781D1F92E59400FEC22F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F60B0ABC1F931AE600F8763E /* ForecastViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -380,7 +380,7 @@
 			files = (
 				F6FACD971F92EBBA00ADCBE3 /* Weather.swift in Sources */,
 				F6FACD951F92EA8700ADCBE3 /* DarkSkyAPIClient.swift in Sources */,
-				F65977FC1F92DE9C00FEC22F /* ViewController.swift in Sources */,
+				F60B0ABD1F931AFA00F8763E /* ForecastViewController.swift in Sources */,
 				F65977FA1F92DE9C00FEC22F /* AppDelegate.swift in Sources */,
 				F6FACD991F9300BC00ADCBE3 /* ForecastViewModel.swift in Sources */,
 			);

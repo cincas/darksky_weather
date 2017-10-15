@@ -7,7 +7,7 @@ private let weatherCellIdentifier = "weatherCellIdentifier"
 private let lineSpacing: CGFloat = 10.0
 private let interitemSpacing: CGFloat = 5.0
 
-class ViewController: UIViewController {
+class ForecastViewController: UIViewController {
   let viewModel: ForecastViewModel
   
   let collectionView: UICollectionView = {
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
   }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension ForecastViewController: UICollectionViewDataSource {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1
   }
@@ -80,7 +80,7 @@ extension ViewController: UICollectionViewDataSource {
   }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension ForecastViewController: UICollectionViewDelegateFlowLayout {
 }
 
 class WeatherCollectionViewCell: UICollectionViewCell {

@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let apiClient = DarkSkyAPIClient(apiKey: "7ac63069af3f8767de3e8767d8151025")
     let location = Location(latitude: 33.8650, longitude: 151.2094)
     let viewModel = ForecastViewModel(location: location, apiClient: apiClient)
-    let viewController = ViewController(viewModel: viewModel)
+    let viewController = ForecastViewController(viewModel: viewModel)
     
     let navigationViewController = UINavigationController(rootViewController: viewController)
     let window = UIWindow(frame: UIScreen.main.bounds)
