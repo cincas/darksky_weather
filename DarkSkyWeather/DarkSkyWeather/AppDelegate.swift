@@ -7,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    let apiClient = DarkSkyAPIClient(apiKey: "7ac63069af3f8767de3e8767d8151025")
+    let apiClient = APIClient(apiKey: "7ac63069af3f8767de3e8767d8151025")
     
     // Change latitude and longitude for different city
     let location = Location(latitude: 33.8650, longitude: 151.2094)
