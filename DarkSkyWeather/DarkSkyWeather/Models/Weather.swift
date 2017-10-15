@@ -11,11 +11,11 @@ struct Forecast: Decodable {
 struct DailyForecast: Decodable {
   let summary: String
   let icon: String
-  let weathers: [Weather]
+  let weatherList: [Weather]
   enum CodingKeys: String, CodingKey {
     case summary
     case icon
-    case weathers = "data"
+    case weatherList = "data"
   }
 }
 

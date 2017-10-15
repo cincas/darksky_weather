@@ -47,10 +47,10 @@ extension ForecastViewModel {
 
 extension ForecastViewModel {
   func numberOfForecastDays() -> Int {
-    return model?.daily.weathers.count ?? 0
+    return model?.daily.weatherList.count ?? 0
   }
   
   func weather(at indexPath: IndexPath) -> Weather? {
-    return model?.daily.weathers[indexPath.item]
+    return model?.daily.weatherList[indexPath.item]
   }
 }
