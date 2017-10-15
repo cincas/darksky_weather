@@ -52,7 +52,9 @@ class ForecastViewController: UIViewController {
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-      let width = collectionView.bounds.width / 2 - interitemSpacing
+      let columns = CGFloat(viewModel.numberOfItemsInRow)
+      
+      let width = collectionView.bounds.width / columns - interitemSpacing * (columns - 1)
       layout.estimatedItemSize = CGSize(width: width, height: 1)
     }
   }

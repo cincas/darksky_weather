@@ -12,6 +12,8 @@ class ForecastViewModel {
   private(set) var model: Forecast?
   fileprivate let apiClient: DarkSkyAPIClient
   fileprivate let location: Location
+  
+  var numberOfItemsInRow = 1
   init(location: Location, apiClient: DarkSkyAPIClient) {
     self.location = location
     self.apiClient = apiClient
