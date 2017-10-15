@@ -138,8 +138,8 @@ class WeatherCollectionViewCell: UICollectionViewCell {
   func apply(weather: Weather) {
     let summary = weather.summary
     let icon = weather.icon
-    let temperatureHigh = Int(fahrenheitToCelsius(weather.temperatureHigh))
-    let temperatureLow = Int(fahrenheitToCelsius(weather.temperatureLow))
+    let temperatureHigh = Int(weather.temperatureHigh)
+    let temperatureLow = Int(weather.temperatureLow)
     let temperature = "\(temperatureHigh) - \(temperatureLow)"
     summaryLabel.text = summary
     iconLabel.text = icon
@@ -152,10 +152,6 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     summaryLabel.text = nil
     iconLabel.text = nil
     temperatureLabel.text = nil
-  }
-  
-  private func fahrenheitToCelsius(_ temperature: Float) -> Float {
-    return (temperature - 32.0) * 5.0 / 9.0
   }
 }
 

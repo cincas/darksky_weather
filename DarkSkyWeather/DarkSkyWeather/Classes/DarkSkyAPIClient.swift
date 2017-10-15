@@ -12,6 +12,10 @@ struct DarkSkyAPIClient {
   let domain: String
   let apiKey: String
   let session: URLSession
+  let defaultParameters = [
+    "exclude": "hourly,currently,flags",
+    "units": "si"
+  ]
   
   init(apiKey: String,
        domain: String = "https://api.darksky.net/",
@@ -23,7 +27,7 @@ struct DarkSkyAPIClient {
   
   func fetchForecastWith(latitude: Double, longitude: Double,
                          completionHandler: @escaping (Result<Forecast, APIError>) -> Void) {
-    guard let urlRequest = urlRequestFor(path: "/forecast",
+    guard let urlRequest = urlRequestFor(path: "forecast",
                                          latitude: latitude,
                                          longitude: longitude) else {
       completionHandler(.failure(.malformedEndpoint))
@@ -57,12 +61,16 @@ struct DarkSkyAPIClient {
 
 extension DarkSkyAPIClient {
   private func urlRequestFor(path: String, latitude: Double, longitude: Double) -> URLRequest? {
-    var urlComponents = URLComponents(string: domain)
-    guard let fullPath = [path, apiKey, "\(latitude),\(longitude)"].joined(separator: "/")
-      .addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-        return nil
+    guard var baseURL = URL(string: domain) else { return nil }
+    [path, apiKey, "\(latitude),\(longitude)"].forEach {
+      baseURL.appendPathComponent($0)
     }
-    urlComponents?.path = fullPath
+    
+    var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)
+    urlComponents?.queryItems = defaultParameters.flatMap {
+      URLQueryItem(name: $0.key, value: String($0.value))
+    }
+    
     guard let url = urlComponents?.url else { return nil }
     return URLRequest(url: url)
   }
