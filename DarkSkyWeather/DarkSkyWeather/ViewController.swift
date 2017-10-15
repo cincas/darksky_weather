@@ -31,11 +31,12 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     title = "Forecast"
     view.backgroundColor = .white
+    
     view.addSubview(collectionView)
     collectionView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
-    
+    collectionView.backgroundColor = .white
     collectionView.delegate = self
     collectionView.dataSource = self
     collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: weatherCellIdentifier)

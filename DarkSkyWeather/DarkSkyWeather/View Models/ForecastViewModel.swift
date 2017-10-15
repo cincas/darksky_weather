@@ -3,16 +3,25 @@
 import Foundation
 import Result
 
+struct Location {
+  let latitude: Double
+  let longitude: Double
+}
+
 class ForecastViewModel {
-  fileprivate let apiClient = DarkSkyAPIClient()
-  var model: Forecast?
-  let latitude = 33.8650
-  let longitude = 151.2094
+  private(set) var model: Forecast?
+  fileprivate let apiClient: DarkSkyAPIClient
+  fileprivate let location: Location
+  init(location: Location, apiClient: DarkSkyAPIClient) {
+    self.location = location
+    self.apiClient = apiClient
+  }
 }
 
 extension ForecastViewModel {
   func load(_ completionHandler: @escaping (Result<Forecast, APIError>) -> Void) {
-    apiClient.fetchForecastWith(latitude: latitude, longitude: longitude) { [weak self] result in
+    apiClient.fetchForecastWith(latitude: location.latitude,
+                                longitude: location.longitude) { [weak self] result in
       guard let sself = self else {
         completionHandler(.failure(.unknown))
         return

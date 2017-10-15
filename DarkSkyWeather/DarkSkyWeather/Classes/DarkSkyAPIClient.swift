@@ -13,8 +13,8 @@ struct DarkSkyAPIClient {
   let apiKey: String
   let session: URLSession
   
-  init(domain: String = "https://api.darksky.net/",
-       apiKey: String = "7ac63069af3f8767de3e8767d8151025",
+  init(apiKey: String,
+       domain: String = "https://api.darksky.net/",
        session: URLSession = URLSession.shared) {
     self.domain = domain
     self.apiKey = apiKey
