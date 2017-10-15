@@ -18,6 +18,8 @@ class ForecastViewController: UIViewController {
     return view
   }()
   
+  let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+  
   init(viewModel: ForecastViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
@@ -30,20 +32,30 @@ class ForecastViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Forecast"
-    view.backgroundColor = .white
     
     view.addSubview(collectionView)
     collectionView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
-    collectionView.backgroundColor = .white
+    collectionView.backgroundColor = #colorLiteral(red: 0.9100133181, green: 0.8819860816, blue: 0.8097960949, alpha: 1)
     collectionView.delegate = self
     collectionView.dataSource = self
     collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: weatherCellIdentifier)
     
+    view.addSubview(loadingIndicator)
+    loadingIndicator.snp.makeConstraints { make in
+      make.center.equalToSuperview()
+    }
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    guard viewModel.shouldLoadData else { return }
+    loadingIndicator.startAnimating()
     viewModel.load { [weak self] _ in
       DispatchQueue.main.async {
         guard let sself = self else { return }
+        sself.loadingIndicator.stopAnimating()
         sself.collectionView.reloadData()
       }
     }
@@ -161,7 +173,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     layoutAttributes.frame = newFrame
     return layoutAttributes
   }
-  
+
   func apply(weather: Weather) {
     let summary = weather.summary
     let icon = weather.icon

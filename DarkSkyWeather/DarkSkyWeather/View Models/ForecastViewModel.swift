@@ -12,7 +12,7 @@ class ForecastViewModel {
   private(set) var model: Forecast?
   fileprivate let apiClient: DarkSkyAPIClient
   fileprivate let location: Location
-  
+  private(set) var shouldLoadData = true
   var numberOfItemsInRow = 1
   init(location: Location, apiClient: DarkSkyAPIClient) {
     self.location = location
@@ -22,6 +22,11 @@ class ForecastViewModel {
 
 extension ForecastViewModel {
   func load(_ completionHandler: @escaping (Result<Forecast, APIError>) -> Void) {
+    guard shouldLoadData else {
+      completionHandler(.failure(.unknown))
+      return
+    }
+    
     apiClient.fetchForecastWith(latitude: location.latitude,
                                 longitude: location.longitude) { [weak self] result in
       guard let sself = self else {
@@ -36,6 +41,7 @@ extension ForecastViewModel {
       switch result {
       case let .success(forecast):
         sself.model = forecast
+        sself.shouldLoadData = false
         break
       case let .failure(error):
         print(error)
