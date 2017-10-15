@@ -4,7 +4,7 @@ target 'DarkSkyWeather' do
   use_frameworks!
 
   pod 'SnapKit', '~> 4.0.0'
-
+  pod 'Result', '~> 3.2.3'
   target 'DarkSkyWeatherTests' do
     inherit! :search_paths
   end

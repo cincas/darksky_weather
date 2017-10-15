@@ -15,6 +15,8 @@
 		F65978011F92DE9C00FEC22F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F65978001F92DE9C00FEC22F /* Assets.xcassets */; };
 		F65978041F92DE9C00FEC22F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F65978021F92DE9C00FEC22F /* LaunchScreen.storyboard */; };
 		F659780F1F92DE9C00FEC22F /* DarkSkyWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659780E1F92DE9C00FEC22F /* DarkSkyWeatherTests.swift */; };
+		F6FACD951F92EA8700ADCBE3 /* DarkSkyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659781C1F92E56F00FEC22F /* DarkSkyAPIClient.swift */; };
+		F6FACD971F92EBBA00ADCBE3 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FACD961F92EBBA00ADCBE3 /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		F659780A1F92DE9C00FEC22F /* DarkSkyWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DarkSkyWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F659780E1F92DE9C00FEC22F /* DarkSkyWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyWeatherTests.swift; sourceTree = "<group>"; };
 		F65978101F92DE9C00FEC22F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F659781C1F92E56F00FEC22F /* DarkSkyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyAPIClient.swift; sourceTree = "<group>"; };
+		F6FACD961F92EBBA00ADCBE3 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,10 @@
 		F65977F81F92DE9C00FEC22F /* DarkSkyWeather */ = {
 			isa = PBXGroup;
 			children = (
+				F659781B1F92E56F00FEC22F /* Classes */,
+				F659781F1F92E59400FEC22F /* Models */,
+				F659781E1F92E59400FEC22F /* View Models */,
+				F659781D1F92E59400FEC22F /* ViewControllers */,
 				F65977F91F92DE9C00FEC22F /* AppDelegate.swift */,
 				F65977FB1F92DE9C00FEC22F /* ViewController.swift */,
 				F65977FD1F92DE9C00FEC22F /* Main.storyboard */,
@@ -126,6 +134,36 @@
 				F65978101F92DE9C00FEC22F /* Info.plist */,
 			);
 			path = DarkSkyWeatherTests;
+			sourceTree = "<group>";
+		};
+		F659781B1F92E56F00FEC22F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F659781C1F92E56F00FEC22F /* DarkSkyAPIClient.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		F659781D1F92E59400FEC22F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F659781E1F92E59400FEC22F /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		F659781F1F92E59400FEC22F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F6FACD961F92EBBA00ADCBE3 /* Weather.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,10 +326,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DarkSkyWeather/Pods-DarkSkyWeather-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +379,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6FACD971F92EBBA00ADCBE3 /* Weather.swift in Sources */,
+				F6FACD951F92EA8700ADCBE3 /* DarkSkyAPIClient.swift in Sources */,
 				F65977FC1F92DE9C00FEC22F /* ViewController.swift in Sources */,
 				F65977FA1F92DE9C00FEC22F /* AppDelegate.swift in Sources */,
 			);
@@ -497,6 +539,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6APHY676XK;
 				INFOPLIST_FILE = DarkSkyWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cincas.DarkSkyWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -513,6 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6APHY676XK;
 				INFOPLIST_FILE = DarkSkyWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cincas.DarkSkyWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";

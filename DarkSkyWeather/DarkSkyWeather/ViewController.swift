@@ -3,9 +3,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    let apiClient = DarkSkyAPIClient()
+    apiClient.fetchForecastWith(latitude: 33.8650, longitude: 151.2094) { result in
+      print(result)
+    }
   }
 }
