@@ -8,7 +8,7 @@ private let lineSpacing: CGFloat = 10.0
 private let interitemSpacing: CGFloat = 5.0
 
 class ViewController: UIViewController {
-  let viewModel = ForecastViewModel()
+  let viewModel: ForecastViewModel
   
   let collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -18,8 +18,18 @@ class ViewController: UIViewController {
     return view
   }()
   
+  init(viewModel: ForecastViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    title = "Forecast"
     view.backgroundColor = .white
     view.addSubview(collectionView)
     collectionView.snp.makeConstraints { make in
@@ -85,7 +95,6 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     [temperatureLabel, iconLabel, summaryLabel].forEach {
       $0.textColor = .white
       $0.textAlignment = .center
-      $0.adjustsFontSizeToFitWidth = true
       $0.backgroundColor = .clear
       contentView.addSubview($0)
     }
@@ -135,6 +144,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     iconLabel.text = icon
     temperatureLabel.text  = temperature
     setNeedsLayout()
+    layoutIfNeeded()
   }
   
   func reset() {
